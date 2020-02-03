@@ -8,4 +8,11 @@ module.exports = {
   'plugins': [
     'jsx-a11y',
   ],
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"]
+      }
+    }
+  }
 }
