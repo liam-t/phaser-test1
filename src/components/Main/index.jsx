@@ -11,12 +11,13 @@ const defaultProps = {};
 
 
 const Main = () => {
+  // React.useEffect(() => {});
   const config = {
+    parent: 'phaserParent',
     type: CANVAS,
-    parent: 'phaser-example',
     width: 800,
-    height: 600,
-    backgroundColor: '#7d7d7d',
+    height: 500,
+    backgroundColor: '#000000',
     scene: [Scene1],
     pixelArt: true,
     renderer: {
@@ -36,15 +37,16 @@ const Main = () => {
 
   new Game(config);
 
-  return (
-    <MainOuter>
-      <p>This is Main</p>
-    </MainOuter>
-  );
+  return <MainOuter id="phaserParent" />;
 };
 Main.propTypes = propTypes;
 Main.defaultProps = defaultProps;
 
 export default Main;
 
-const MainOuter = styled.div``;
+const MainOuter = styled.div`
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background-color: black;
+`;

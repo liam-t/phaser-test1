@@ -1,18 +1,17 @@
-const createAnims = (thisParam) => {
-  thisParam.anims.create({
+const createAnims = (scene) => {
+  scene.anims.create({
     key: 'idle',
-    frames: thisParam.anims.generateFrameNames('character', {
+    frames: scene.anims.generateFrameNames('player', {
       prefix: 'idle-',
       start: 1,
       end: 4,
     }),
     frameRate: 8,
     repeat: -1,
-    // yoyo: true,
   });
-  thisParam.anims.create({
+  scene.anims.create({
     key: 'jump',
-    frames: thisParam.anims.generateFrameNames('character', {
+    frames: scene.anims.generateFrameNames('player', {
       prefix: 'jump-',
       start: 1,
       end: 7,
@@ -20,9 +19,9 @@ const createAnims = (thisParam) => {
     frameRate: 8,
     // repeat: -1,
   });
-  thisParam.anims.create({
+  scene.anims.create({
     key: 'jumpIdle',
-    frames: thisParam.anims.generateFrameNames('character', {
+    frames: scene.anims.generateFrameNames('player', {
       prefix: 'jump-',
       start: 7,
       end: 7,
@@ -30,9 +29,9 @@ const createAnims = (thisParam) => {
     frameRate: 8,
     // repeat: -1,
   });
-  thisParam.anims.create({
+  scene.anims.create({
     key: 'kick',
-    frames: thisParam.anims.generateFrameNames('character', {
+    frames: scene.anims.generateFrameNames('player', {
       prefix: 'kick-',
       start: 1,
       end: 2,
@@ -40,9 +39,9 @@ const createAnims = (thisParam) => {
     frameRate: 8,
     // repeat: -1,
   });
-  thisParam.anims.create({
+  scene.anims.create({
     key: 'forward',
-    frames: thisParam.anims.generateFrameNames('character', {
+    frames: scene.anims.generateFrameNames('player', {
       prefix: 'forward-',
       start: 1,
       end: 6,
@@ -50,9 +49,9 @@ const createAnims = (thisParam) => {
     frameRate: 8,
     repeat: -1,
   });
-  thisParam.anims.create({
+  scene.anims.create({
     key: 'backward',
-    frames: thisParam.anims.generateFrameNames('character', {
+    frames: scene.anims.generateFrameNames('player', {
       prefix: 'backward-',
       start: 1,
       end: 6,
@@ -60,9 +59,9 @@ const createAnims = (thisParam) => {
     frameRate: 8,
     repeat: -1,
   });
-  thisParam.anims.create({
+  scene.anims.create({
     key: 'turn',
-    frames: thisParam.anims.generateFrameNames('character', {
+    frames: scene.anims.generateFrameNames('player', {
       prefix: 'turn-',
       start: 1,
       end: 6,

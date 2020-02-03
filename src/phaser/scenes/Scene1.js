@@ -1,75 +1,91 @@
-import { Scene, Input } from 'phaser';
-import characterSpriteSheet from 'assets/sprites/ryu/ryu1.spr';
-import characterAtlas from 'assets/sprites/ryu/ryu1.atlas';
-import createAnims from 'phaser/createAnims';
+import { Scene } from 'phaser';
+import playerSpriteSheet from 'assets/sprites/ryu/ryu1.spr';
+import playerAtlas from 'assets/sprites/ryu/ryu1.atlas';
+import Player from 'phaser/classes/Player';
+import foreground from 'assets/sprites/industralBackground/foreground.png.img';
+import buildings from 'assets/sprites/industralBackground/buildings.png.img';
+import farBuildings from 'assets/sprites/industralBackground/far-buildings.png.img';
+import bg from 'assets/sprites/industralBackground/bg.png.img';
+
 
 class Scene1 extends Scene {
   constructor() {
     super('Scene1');
-    this.character = null;
-    this.jumpTimer = 0;
+    this.player = null;
+
+    this.bgMap = [
+      {
+        name: 'bg',
+        naturalWidth: 272,
+        naturalHeight: 160,
+      },
+      {
+        name: 'farBuildings',
+        naturalWidth: 213,
+        naturalHeight: 142,
+      },
+      {
+        name: 'buildings',
+        naturalWidth: 272,
+        naturalHeight: 150,
+      },
+      {
+        name: 'foreground',
+        naturalWidth: 272,
+        naturalHeight: 104,
+      },
+    ];
+    this.bgLayers = {};
   }
 
   preload() {
     this.load.atlas(
-      'character',
-      characterSpriteSheet,
-      characterAtlas,
+      'player',
+      playerSpriteSheet,
+      playerAtlas,
     );
+    this.load.image('foreground', foreground);
+    this.load.image('buildings', buildings);
+    this.load.image('farBuildings', farBuildings);
+    this.load.image('bg', bg);
   }
 
   create() {
-    const { canvas } = this.sys.game;
-    const { height } = canvas;
-    this.character = this.physics.add.sprite(100, height - 50, 'character');
-    this.character.setScale(2);
-    this.character.setBounce(0.2); // our player will bounce from items
-    this.character.setCollideWorldBounds(true); // don't go out of the map
-
-    createAnims(this);
-
-    this.character.anims.play('idle');
-
-    this.keys = this.input.keyboard.addKeys({
-      left: Input.Keyboard.KeyCodes.A,
-      right: Input.Keyboard.KeyCodes.D,
-      up: Input.Keyboard.KeyCodes.W,
-      down: Input.Keyboard.KeyCodes.S,
-      kick: Input.Keyboard.KeyCodes.I,
-    });
-  }
-
-  update(time, delta) {
     const {
-      left,
-      right,
-      up,
-      // down,
-      kick,
-    } = this.keys;
-    if (kick.isDown) {
-      this.character.anims.play('kick', true);
-    } else if (left.isDown) {
-      this.character.body.setVelocityX(-300);
-      this.character.anims.play('backward', true);
-      this.character.flipX = false;
-    } else if (right.isDown) {
-      this.character.body.setVelocityX(300);
-      this.character.anims.play('forward', true);
-      this.character.flipX = false;
-    } else if (!this.character.body.onFloor()) {
-      this.character.anims.play('jumpIdle');
-    } else {
-      this.character.body.setVelocityX(0);
-      this.character.anims.play('idle', true);
-    }
+      canvas: {
+        width: gameWidth,
+        height: gameHeight,
+      },
+    } = this.sys.game;
 
-    if (up.isDown && this.character.body.onFloor() && this.game.loop.time > this.jumpTimer) {
-      this.character.anims.play('jump', true);
-      this.character.body.velocity.y = -2400;
-      this.jumpTimer = this.game.loop.time + 750;
-    }
+    // const tallestBgLayer = this.bgMap.reduce((acc, item) => Math.max(acc, item.naturalHeight), 0);
+    this.bgMap.forEach(({ name, naturalHeight }, i) => {
+      // const yOffset = tallestBgLayer - naturalHeight;
+      this.bgLayers[name] = this.add.tileSprite(0, gameHeight - ((naturalHeight / 2)), gameWidth * 5, naturalHeight, name);
+      this.bgLayers[name].setScale(2);
+      this.bgLayers[name].setOrigin(0, 0.75); // why..
+      // this.bgLayers[name].tilePositionX = this.cameras.main.scrollX * 0.5 * i;
+    });
+
+    this.player = new Player(this);
+    this.add.existing(this.player);
+
+    // this.cameras.main.setViewport(200, 150, 400, 300);
+    this.physics.world.bounds.setTo(0, 0, gameWidth * 5, gameHeight);
+    this.cameras.main.setBounds(0, 0, gameWidth * 5, gameHeight);
+    this.cameras.main.startFollow(this.player, true, 0.1, 0.1, gameWidth * -0.1);
   }
+
+  update = () => {
+    Object.entries(this.bgLayers).forEach(([key, val], i, { length }) => {
+      this.bgLayers[key].tilePositionX = this.cameras.main.scrollX * 0.005 * (i * i * i);
+      this.bgLayers[key].tilePositionY = this.cameras.main.scrollY * 0.005 * (i * i);
+    });
+  };
+
+  setUpdate = (newFunc) => {
+    this.update = newFunc;
+  };
 }
 
 export default Scene1;
