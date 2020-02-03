@@ -1,7 +1,7 @@
 import { Scene, Input } from 'phaser';
 import characterSpriteSheet from 'assets/sprites/ryu/ryu1.spr';
 import characterAtlas from 'assets/sprites/ryu/ryu1.atlas';
-import createAnims from 'phaser/createAnims.js'
+import createAnims from 'phaser/createAnims';
 
 class Scene1 extends Scene {
   constructor() {
@@ -44,19 +44,21 @@ class Scene1 extends Scene {
       left,
       right,
       up,
-      down,
+      // down,
       kick,
     } = this.keys;
     if (kick.isDown) {
       this.character.anims.play('kick', true);
     } else if (left.isDown) {
-      this.character.body.setVelocityX(-200);
+      this.character.body.setVelocityX(-300);
       this.character.anims.play('backward', true);
       this.character.flipX = false;
     } else if (right.isDown) {
-      this.character.body.setVelocityX(200);
+      this.character.body.setVelocityX(300);
       this.character.anims.play('forward', true);
       this.character.flipX = false;
+    } else if (!this.character.body.onFloor()) {
+      this.character.anims.play('jumpIdle');
     } else {
       this.character.body.setVelocityX(0);
       this.character.anims.play('idle', true);
@@ -64,7 +66,7 @@ class Scene1 extends Scene {
 
     if (up.isDown && this.character.body.onFloor() && this.game.loop.time > this.jumpTimer) {
       this.character.anims.play('jump', true);
-      this.character.body.velocity.y = -400;
+      this.character.body.velocity.y = -2400;
       this.jumpTimer = this.game.loop.time + 750;
     }
   }

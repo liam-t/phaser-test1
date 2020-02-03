@@ -21,6 +21,16 @@ const createAnims = (thisParam) => {
     // repeat: -1,
   });
   thisParam.anims.create({
+    key: 'jumpIdle',
+    frames: thisParam.anims.generateFrameNames('character', {
+      prefix: 'jump-',
+      start: 7,
+      end: 7,
+    }),
+    frameRate: 8,
+    // repeat: -1,
+  });
+  thisParam.anims.create({
     key: 'kick',
     frames: thisParam.anims.generateFrameNames('character', {
       prefix: 'kick-',

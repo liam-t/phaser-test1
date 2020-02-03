@@ -28,7 +28,7 @@ const Main = () => {
       default: 'arcade',
       arcade: {
         gravity: {
-          y: 1000,
+          y: 9000,
         },
       },
     },
