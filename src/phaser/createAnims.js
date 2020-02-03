@@ -6,8 +6,9 @@ const createAnims = (thisParam) => {
       start: 1,
       end: 4,
     }),
-    frameRate: 7,
+    frameRate: 8,
     repeat: -1,
+    // yoyo: true,
   });
   thisParam.anims.create({
     key: 'jump',
@@ -16,7 +17,7 @@ const createAnims = (thisParam) => {
       start: 1,
       end: 7,
     }),
-    frameRate: 7,
+    frameRate: 8,
     // repeat: -1,
   });
   thisParam.anims.create({
@@ -26,7 +27,7 @@ const createAnims = (thisParam) => {
       start: 1,
       end: 2,
     }),
-    frameRate: 7,
+    frameRate: 8,
     // repeat: -1,
   });
   thisParam.anims.create({
@@ -36,7 +37,7 @@ const createAnims = (thisParam) => {
       start: 1,
       end: 6,
     }),
-    frameRate: 7,
+    frameRate: 8,
     repeat: -1,
   });
   thisParam.anims.create({
@@ -46,7 +47,7 @@ const createAnims = (thisParam) => {
       start: 1,
       end: 6,
     }),
-    frameRate: 7,
+    frameRate: 8,
     repeat: -1,
   });
   thisParam.anims.create({
@@ -56,7 +57,7 @@ const createAnims = (thisParam) => {
       start: 1,
       end: 6,
     }),
-    frameRate: 7,
+    frameRate: 8,
   });
 };
 

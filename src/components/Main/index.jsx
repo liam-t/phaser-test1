@@ -18,6 +18,7 @@ const Main = () => {
     height: 600,
     backgroundColor: '#7d7d7d',
     scene: [Scene1],
+    pixelArt: true,
     renderer: {
       gameContext: {
         imageSmoothingEnabled: false, // :(

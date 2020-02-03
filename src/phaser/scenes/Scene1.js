@@ -7,6 +7,7 @@ class Scene1 extends Scene {
   constructor() {
     super('Scene1');
     this.character = null;
+    this.jumpTimer = 0;
   }
 
   preload() {
@@ -21,6 +22,7 @@ class Scene1 extends Scene {
     const { canvas } = this.sys.game;
     const { height } = canvas;
     this.character = this.physics.add.sprite(100, height - 50, 'character');
+    this.character.setScale(2);
     this.character.setBounce(0.2); // our player will bounce from items
     this.character.setCollideWorldBounds(true); // don't go out of the map
 
@@ -28,7 +30,6 @@ class Scene1 extends Scene {
 
     this.character.anims.play('idle');
 
-    // this.cursors = this.input.keyboard.createCursorKeys();
     this.keys = this.input.keyboard.addKeys({
       left: Input.Keyboard.KeyCodes.A,
       right: Input.Keyboard.KeyCodes.D,
@@ -36,7 +37,6 @@ class Scene1 extends Scene {
       down: Input.Keyboard.KeyCodes.S,
       kick: Input.Keyboard.KeyCodes.I,
     });
-    console.log('this.keys: %o', this.keys);
   }
 
   update(time, delta) {
@@ -47,7 +47,9 @@ class Scene1 extends Scene {
       down,
       kick,
     } = this.keys;
-    if (left.isDown) {
+    if (kick.isDown) {
+      this.character.anims.play('kick', true);
+    } else if (left.isDown) {
       this.character.body.setVelocityX(-200);
       this.character.anims.play('backward', true);
       this.character.flipX = false;
@@ -55,14 +57,15 @@ class Scene1 extends Scene {
       this.character.body.setVelocityX(200);
       this.character.anims.play('forward', true);
       this.character.flipX = false;
-    } else if (up.isDown) {
-      this.character.body.setVelocityY(-200);
-      this.character.anims.play('jump');
-    } else if (kick.isDown) {
-      this.character.anims.play('kick', true);
     } else {
       this.character.body.setVelocityX(0);
       this.character.anims.play('idle', true);
+    }
+
+    if (up.isDown && this.character.body.onFloor() && this.game.loop.time > this.jumpTimer) {
+      this.character.anims.play('jump', true);
+      this.character.body.velocity.y = -400;
+      this.jumpTimer = this.game.loop.time + 750;
     }
   }
 }
