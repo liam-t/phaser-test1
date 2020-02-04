@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "4dfe611c3222dc259cceb02707b69724",
+    "revision": "a43c2790072725631fb65e5c067cb24d",
     "url": "/phaser-test1/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/phaser-test1/static/css/2.764ccc25.chunk.css"
   },
   {
-    "revision": "faa40ba3d68f8ea6ccf9",
+    "revision": "b53c3bbb5d3ae79c4476",
     "url": "/phaser-test1/static/css/main.5ecd60fb.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/phaser-test1/static/js/2.b5eaf396.chunk.js.LICENSE"
   },
   {
-    "revision": "faa40ba3d68f8ea6ccf9",
-    "url": "/phaser-test1/static/js/main.0c41ee01.chunk.js"
+    "revision": "b53c3bbb5d3ae79c4476",
+    "url": "/phaser-test1/static/js/main.fdfee356.chunk.js"
   },
   {
     "revision": "2cd815de71c070050b85",

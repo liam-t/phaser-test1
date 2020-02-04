@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/phaser-test1/static/css/main.5ecd60fb.chunk.css",
-    "main.js": "/phaser-test1/static/js/main.0c41ee01.chunk.js",
-    "main.js.map": "/phaser-test1/static/js/main.0c41ee01.chunk.js.map",
+    "main.js": "/phaser-test1/static/js/main.fdfee356.chunk.js",
+    "main.js.map": "/phaser-test1/static/js/main.fdfee356.chunk.js.map",
     "runtime-main.js": "/phaser-test1/static/js/runtime-main.bc99d83f.js",
     "runtime-main.js.map": "/phaser-test1/static/js/runtime-main.bc99d83f.js.map",
     "static/css/2.764ccc25.chunk.css": "/phaser-test1/static/css/2.764ccc25.chunk.css",
     "static/js/2.b5eaf396.chunk.js": "/phaser-test1/static/js/2.b5eaf396.chunk.js",
     "static/js/2.b5eaf396.chunk.js.map": "/phaser-test1/static/js/2.b5eaf396.chunk.js.map",
     "index.html": "/phaser-test1/index.html",
-    "precache-manifest.5ec5bcaa660143490a6891f3533bf846.js": "/phaser-test1/precache-manifest.5ec5bcaa660143490a6891f3533bf846.js",
+    "precache-manifest.9f5ab1bd4d2531126818c25d495992a3.js": "/phaser-test1/precache-manifest.9f5ab1bd4d2531126818c25d495992a3.js",
     "service-worker.js": "/phaser-test1/service-worker.js",
     "static/css/2.764ccc25.chunk.css.map": "/phaser-test1/static/css/2.764ccc25.chunk.css.map",
     "static/css/main.5ecd60fb.chunk.css.map": "/phaser-test1/static/css/main.5ecd60fb.chunk.css.map",
@@ -26,6 +26,6 @@
     "static/css/2.764ccc25.chunk.css",
     "static/js/2.b5eaf396.chunk.js",
     "static/css/main.5ecd60fb.chunk.css",
-    "static/js/main.0c41ee01.chunk.js"
+    "static/js/main.fdfee356.chunk.js"
   ]
 }
