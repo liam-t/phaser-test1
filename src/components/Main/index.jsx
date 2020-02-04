@@ -15,7 +15,7 @@ const Main = () => {
   const config = {
     parent: 'phaserParent',
     type: CANVAS,
-    width: 800,
+    width: window.innerWidth,
     height: 500,
     backgroundColor: '#000000',
     scene: [Scene1],
