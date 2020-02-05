@@ -1,8 +1,7 @@
 /* eslint-disable react/no-this-in-sfc */
 import React from 'react';
 import styled from 'styled-components';
-import { Game, Scale, CANVAS } from 'phaser';
-import Scene1 from 'phaser/scenes/Scene1';
+import GameWrap from 'components/GameWrap';
 // import create from './create';
 // import PT from 'proptypes';
 
@@ -11,36 +10,18 @@ const defaultProps = {};
 
 
 const Main = () => {
-  // React.useEffect(() => {});
-  const config = {
-    parent: 'phaserParent',
-    type: CANVAS,
-    width: 950,
-    height: 500,
-    scale: {
-      mode: Scale.FIT,
-      parent: 'phaserParent',
-      expandParent: true,
-      // width: '100%',
-      autoCenter: Scale.CENTER_BOTH,
-      // height: 600,
-    },
-    backgroundColor: '#000000',
-    scene: [Scene1],
-    pixelArt: true,
-    physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: {
-          y: 9000,
-        },
-      },
-    },
-  };
+  const [testVal, setTestVal] = React.useState(0);
 
-  const phaserGame = new Game(config);
-
-  return <MainOuter id="phaserParent" />;
+  return (
+    <>
+      <p>testVal: {testVal}</p>
+      <MainOuter>
+        <GameWrap
+          reactSetter={setTestVal}
+        />
+      </MainOuter>
+    </>
+  );
 };
 Main.propTypes = propTypes;
 Main.defaultProps = defaultProps;

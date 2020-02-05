@@ -14,5 +14,8 @@ module.exports = {
         "paths": ["src"]
       }
     }
+  },
+  "rules": {
+    "react/jsx-one-expression-per-line": 0
   }
 }

@@ -57,6 +57,9 @@ class Scene1 extends Scene {
         height: gameHeight,
       },
     } = this.sys.game;
+
+    this.setTestVal = this.data.get('setTestVal');
+
     // const tallestBgLayer = this.bgMap.reduce((acc, item) => Math.max(acc, item.naturalHeight), 0);
     this.bgMap.forEach(({ name, naturalHeight }, i) => {
       // const yOffset = tallestBgLayer - naturalHeight;
@@ -80,6 +83,8 @@ class Scene1 extends Scene {
       this.bgLayers[key].tilePositionX = this.cameras.main.scrollX * 0.005 * (i * i * i);
       this.bgLayers[key].tilePositionY = this.cameras.main.scrollY * 0.005 * (i * i);
     });
+
+    this.setTestVal(Math.round(this.cameras.main.scrollX));
   };
 
   setUpdate = (newFunc) => {
