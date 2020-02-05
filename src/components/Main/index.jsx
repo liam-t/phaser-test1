@@ -15,13 +15,14 @@ const Main = () => {
   const config = {
     parent: 'phaserParent',
     type: CANVAS,
-    width: 880,
+    width: 950,
     height: 500,
     scale: {
-      mode: Scale.WIDTH_CONTROLS_HEIGHT,
+      mode: Scale.FIT,
       parent: 'phaserParent',
       expandParent: true,
-      width: '100%',
+      // width: '100%',
+      autoCenter: Scale.CENTER_BOTH,
       // height: 600,
     },
     backgroundColor: '#000000',
