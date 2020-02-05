@@ -10,14 +10,14 @@ const defaultProps = {};
 
 
 const Main = () => {
-  const [testVal, setTestVal] = React.useState(0);
+  const [phaserCamXPos, setPhaserCamXPos] = React.useState(0);
 
   return (
     <>
-      <p>testVal: {testVal}</p>
+      <p>phaserCamXPos: {phaserCamXPos}</p>
       <MainOuter>
         <GameWrap
-          reactSetter={setTestVal}
+          reactSetter={setPhaserCamXPos}
         />
       </MainOuter>
     </>
