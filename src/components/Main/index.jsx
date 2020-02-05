@@ -1,7 +1,7 @@
 /* eslint-disable react/no-this-in-sfc */
 import React from 'react';
 import styled from 'styled-components';
-import { Game, CANVAS } from 'phaser';
+import { Game, Scale, CANVAS } from 'phaser';
 import Scene1 from 'phaser/scenes/Scene1';
 // import create from './create';
 // import PT from 'proptypes';
@@ -15,16 +15,18 @@ const Main = () => {
   const config = {
     parent: 'phaserParent',
     type: CANVAS,
-    width: window.innerWidth,
+    width: 880,
     height: 500,
+    scale: {
+      mode: Scale.WIDTH_CONTROLS_HEIGHT,
+      parent: 'phaserParent',
+      expandParent: true,
+      width: '100%',
+      // height: 600,
+    },
     backgroundColor: '#000000',
     scene: [Scene1],
     pixelArt: true,
-    renderer: {
-      gameContext: {
-        imageSmoothingEnabled: false, // :(
-      },
-    },
     physics: {
       default: 'arcade',
       arcade: {
@@ -35,7 +37,7 @@ const Main = () => {
     },
   };
 
-  new Game(config);
+  const phaserGame = new Game(config);
 
   return <MainOuter id="phaserParent" />;
 };

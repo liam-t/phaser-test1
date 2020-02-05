@@ -57,7 +57,6 @@ class Scene1 extends Scene {
         height: gameHeight,
       },
     } = this.sys.game;
-
     // const tallestBgLayer = this.bgMap.reduce((acc, item) => Math.max(acc, item.naturalHeight), 0);
     this.bgMap.forEach(({ name, naturalHeight }, i) => {
       // const yOffset = tallestBgLayer - naturalHeight;
