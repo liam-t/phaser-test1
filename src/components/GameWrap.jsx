@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import PT from 'proptypes';
 import { Game, Scale, CANVAS } from 'phaser';
 import Scene1 from 'phaser/scenes/Scene1';
@@ -16,20 +15,26 @@ const GameWrap = ({ reactSetter }) => {
     width: 950,
     height: 500,
     scale: {
-      mode: Scale.FIT,
+      mode: Scale.RESIZE,
       parent: 'phaserParent',
-      expandParent: true,
-      autoCenter: Scale.CENTER_BOTH,
+      // expandParent: true,
     },
-    backgroundColor: '#000000',
+    backgroundColor: '#fff',
     scene: [Scene1],
     pixelArt: true,
     physics: {
       default: 'arcade',
       arcade: {
+        // debug: true,
         gravity: {
           y: 9000,
         },
+      },
+    },
+    input: {
+      mouse: {
+        capture: false,
+        enabled: false,
       },
     },
     callbacks: {
@@ -43,7 +48,7 @@ const GameWrap = ({ reactSetter }) => {
   new Game(config); // eslint-disable-line no-new
 
   return (
-    <GameWrapOuter id="phaserParent" />
+    <div id="phaserParent" />
   );
 };
 GameWrap.propTypes = propTypes;
@@ -52,5 +57,3 @@ GameWrap.defaultProps = defaultProps;
 export default React.memo(
   GameWrap,
 );
-
-const GameWrapOuter = styled.div``;

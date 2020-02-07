@@ -76,6 +76,8 @@ class Scene1 extends Scene {
     this.physics.world.bounds.setTo(0, 0, gameWidth * 5, gameHeight);
     this.cameras.main.setBounds(0, 0, gameWidth * 5, gameHeight);
     this.cameras.main.startFollow(this.player, true, 0.1, 0.1, gameWidth * -0.1);
+
+    console.log('this.game.input: %o', this.game.input);
   }
 
   update = () => {

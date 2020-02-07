@@ -14,7 +14,7 @@ const Main = () => {
 
   return (
     <>
-      <p>phaserCamXPos: {phaserCamXPos}</p>
+      <PhaserData>phaserCamXPos: {phaserCamXPos}</PhaserData>
       <MainOuter>
         <GameWrap
           reactSetter={setPhaserCamXPos}
@@ -31,6 +31,14 @@ export default Main;
 const MainOuter = styled.div`
   display: flex;
   align-items: center;
-  height: 100vh;
-  background-color: black;
+  height: 80vh;
+  margin-bottom: 20vh;
+`;
+
+const PhaserData = styled.p`
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  padding: 1em 2em;
 `;
