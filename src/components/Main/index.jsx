@@ -31,8 +31,8 @@ export default Main;
 const MainOuter = styled.div`
   display: flex;
   align-items: center;
-  height: 80vh;
-  margin-bottom: 20vh;
+  height: 70vh;
+  margin: 15vh 0;
 `;
 
 const PhaserData = styled.p`
